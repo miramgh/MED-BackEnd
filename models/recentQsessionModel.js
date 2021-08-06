@@ -8,6 +8,10 @@ const recentQsessionSchema = new mongoose.Schema(
         ref: 'User',
         required: [true, 'Review must belong to a user']
     },
+    id : {
+        type :String ,
+        required : [true , " where is the fuckin dataaa you wanna submit "]
+    },
 
     chapter : {
         type :String ,
