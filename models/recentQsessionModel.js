@@ -31,7 +31,7 @@ const recentQsessionSchema = new mongoose.Schema(
 recentQsessionSchema.pre(/^find/, function(next) {
   this.populate({
     path: 'user',
-    select : '_id'
+    select : 'name'
   });
   next();
 });
