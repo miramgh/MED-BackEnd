@@ -8,10 +8,15 @@ const hpp = require('hpp');
 const cors = require('cors')
 
 const AppError = require('./utils/appError');
+const oAuthRouter = require('./routes/oAuthRoutes')
 const globalErrorHandler = require('./controllers/errorController');
 const caseRouter = require('./routes/caseRoutes');
 const userRouter = require('./routes/userRoutes');
 const QSessionRouter = require('./routes/QSessionRoutes')
+const collectionRouter = require('./routes/collectionRoutes')
+const passportSetup = require('./controllers/passport-setup')
+
+
 
 const app = express();
 
@@ -69,9 +74,12 @@ app.use((req, res, next) => {
 });
 
 // 3) ROUTES
+
 app.use('/api/cases', caseRouter);
 app.use('/api/users', userRouter);
 app.use('/api/recentQSession' , QSessionRouter)
+app.use('/api/collections' , collectionRouter)
+app.use('/api/auth' , oAuthRouter)
 
 
 app.all('*', (req, res, next) => {

@@ -65,6 +65,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
   user.password = undefined
   // 3) If everything ok, send token to client
+  console.log(user)
   createSendToken(user, 200, res);
 });
 
@@ -92,6 +93,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   // 2) Verification token
+  
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   //console.log(decoded)
   //console.log(token)
