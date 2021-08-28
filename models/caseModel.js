@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 
 const caseSchema = new mongoose.Schema(
   {
+    author :{
+      type : String,
+      required :[true , 'Something went wrong']
+
+    },
     chapter:{
       type : String,
       required :[true , ' We need you to specify the chapter as we use this to sort acc to chapter'],
