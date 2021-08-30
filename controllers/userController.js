@@ -11,7 +11,11 @@ const filterObj = (obj, ...allowedFields) => {
 };
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const users = await User.find();
+  let users = await User.find().select({
+    "__v": 0,
+    "email":0
+   
+  })
 
   // SEND RESPONSE
   res.status(200).json({

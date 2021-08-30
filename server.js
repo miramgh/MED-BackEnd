@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const socket = require('socket.io')
 
 process.on('uncaughtException', err => {
   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
@@ -26,6 +27,20 @@ const port = process.env.PORT || 8000;
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
+
+const io = socket(server)
+
+io.on('connection' ,(socket)=>{
+  console.log(socket.id)
+  socket.on('added_cases' ,(data)=>{
+    socket.join(data)
+    console.log('mira added case '+ data)
+  })
+
+  socket.on('disconnect' ,()=>{
+    console.log('disconected')
+  })
+})
 
 process.on('unhandledRejection', err => {
   console.log('UNHANDLED REJECTION!  Shutting down...');

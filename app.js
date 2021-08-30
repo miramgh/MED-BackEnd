@@ -75,10 +75,6 @@ app.use((req, res, next) => {
 
 // 3) ROUTES
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a511c2fff4617c8b7664c4dc279e0ad144c9b8d0
 app.use('/api/cases', caseRouter);
 app.use('/api/users', userRouter);
 app.use('/api/recentQSession' , QSessionRouter)
