@@ -30,7 +30,7 @@ const server = app.listen(port, () => {
 
 const io = socket(server)
 
-io.on('connection' ,(socket)=>{
+/*io.on('connection' ,(socket)=>{
   console.log(socket.id)
   socket.on('added_cases' ,(data)=>{
     socket.join(data)
@@ -40,7 +40,7 @@ io.on('connection' ,(socket)=>{
   socket.on('disconnect' ,()=>{
     console.log('disconected')
   })
-})
+})*/
 
 process.on('unhandledRejection', err => {
   console.log('UNHANDLED REJECTION!  Shutting down...');
