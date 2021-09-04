@@ -1,4 +1,7 @@
 const User = require('./../models/userModel');
+const Collection = require('./../models/collectionModel');
+const Cases = require('./../models/caseModel');
+
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 
@@ -65,10 +68,15 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
 });
 
 exports.getUser = catchAsync(async(req, res) => {
-  const user = await User.findById(req.params.id)
+  const user = await User.findById(req.params.id);
+  const collections = await Collection.find({user : req.params.id});
+  const cases = await Cases.find({author : req.params.id});
+
   res.status(200).json({
     status: 'success',
-    user
+    user,
+    collections,
+    cases
   });
 });
 exports.createUser = (req, res) => {

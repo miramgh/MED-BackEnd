@@ -3,7 +3,7 @@ const collectionController = require('../controllers/collectionController');
 const authController = require('../controllers/authController');
 
 const router = express.Router();
-
+  
 router
   .route('/')
   .get(
@@ -18,6 +18,8 @@ router
   .get(
     authController.protect,
     collectionController.getCollection)
+
+ 
 
 
 
