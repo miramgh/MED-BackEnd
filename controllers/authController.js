@@ -28,11 +28,12 @@ const createSendToken = (user, statusCode, res) => {
 
   // Remove password from output
   user.password = undefined;
-
+  //console.log(user)
   res.status(statusCode).json({
     status: 'success',
     token,
-    expiresIn: 60*60*24*7
+    expiresIn: 60*60*24*7,
+    user
     /* data: {
       user
     }*/
