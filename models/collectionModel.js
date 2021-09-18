@@ -13,6 +13,10 @@ const collectionSchema = new mongoose.Schema(
       ref: 'User',
       required: [true, 'case must belong to a user']
     },
+    authorName:{
+      type : String,
+      required :[true , 'authorName is required']
+    },
    
     cases: {
       type: Array

@@ -5,7 +5,12 @@ const caseSchema = new mongoose.Schema(
   {
     author :{
       type : String,
-      required :[true , 'Something went wrong']
+      required :[true , 'User Id required']
+
+    },
+    authorName :{
+      type : String,
+      required :[true , 'userName required']
 
     },
     chapter:{
