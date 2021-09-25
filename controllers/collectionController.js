@@ -1,5 +1,6 @@
 const Collection = require('../models/collectionModel');
 const User = require('../models/userModel');
+const Notification = require ('../models/notificationModel')
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
@@ -59,6 +60,12 @@ exports.createCollection = catchAsync(async (req, res, next) => {
     if(!collection.length  ){
         console.log('no items here')
         const newCollection = await Collection.create(req.body);
+        const notification  = await Notification.create({
+          user:req.body.user,
+          authorName: req.body.authorName,
+          topic : req.body.topic 
+        })
+       console.log(notification)
         return res.status(201).json({
             status: 'success',
             data: {

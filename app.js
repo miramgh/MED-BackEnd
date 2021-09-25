@@ -14,6 +14,7 @@ const caseRouter = require('./routes/caseRoutes');
 const userRouter = require('./routes/userRoutes');
 const QSessionRouter = require('./routes/QSessionRoutes')
 const collectionRouter = require('./routes/collectionRoutes')
+const notificationRouter = require('./routes/notificationRoutes')
 const passportSetup = require('./controllers/passport-setup')
 
 
@@ -77,6 +78,7 @@ app.use((req, res, next) => {
 
 app.use('/api/cases', caseRouter);
 app.use('/api/users', userRouter);
+app.use('/api/notification' , notificationRouter)
 app.use('/api/recentQSession' , QSessionRouter)
 app.use('/api/collections' , collectionRouter)
 app.use('/api/auth' , oAuthRouter)

@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: [validator.isEmail, 'Please provide a valid email']
   },
+  notification: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Notification'
+   
+  },
   photo: String,
   role: {
     type: String,
