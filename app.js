@@ -15,6 +15,7 @@ const userRouter = require('./routes/userRoutes');
 const QSessionRouter = require('./routes/QSessionRoutes')
 const collectionRouter = require('./routes/collectionRoutes')
 const notificationRouter = require('./routes/notificationRoutes')
+const learningRouter = require('./routes/learningRoutes')
 const passportSetup = require('./controllers/passport-setup')
 
 
@@ -81,6 +82,7 @@ app.use('/api/users', userRouter);
 app.use('/api/notification' , notificationRouter)
 app.use('/api/recentQSession' , QSessionRouter)
 app.use('/api/collections' , collectionRouter)
+app.use('/api/fork',learningRouter )
 app.use('/api/auth' , oAuthRouter)
 
 

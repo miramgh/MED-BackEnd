@@ -12,11 +12,12 @@ router
   ).post(
     authController.protect,
     notificationController.createNotification
-  ).delete(
+  )
+ /* .delete(
     authController.protect,
     notificationController.deleteNotification
   )
-  
+  */
 
 
 
