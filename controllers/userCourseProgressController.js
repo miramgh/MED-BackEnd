@@ -34,7 +34,7 @@ exports.enrollOrCreate = catchAsync(async (req, res, next) => {
   }
     const myCourses = await UserCourseProgress.find(
       req.query
-    )
+    ).populate("courseId").exec()
     res.status(200).send({
       status:'success',
       data: myCourses
