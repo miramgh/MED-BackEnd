@@ -26,3 +26,17 @@ exports.enrollOrCreate = catchAsync(async (req, res, next) => {
       done:'true'
     })
   })
+  exports.getEnrolledCourses =catchAsync(async (req , res , next )=>{
+    if(Object.keys(req.query).length === 0){
+      return res.status(401).json({
+          status: "bad request"
+      })
+  }
+    const myCourses = await UserCourseProgress.find(
+      req.query
+    )
+    res.status(200).send({
+      status:'success',
+      data: myCourses
+    })
+  })

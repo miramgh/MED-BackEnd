@@ -12,6 +12,9 @@ router
   .patch(
     authController.protect , 
     userCourseProgressController.done
+  ).get(
+    authController.protect ,
+    userCourseProgressController.getEnrolledCourses
   )
 
 module.exports = router;
