@@ -11,11 +11,23 @@ router
     moduleController.createModule)
   .get(
     authController.protect , 
-    moduleController.getAllModule
+    moduleController.getModule
     )
   .patch(
       authController.protect , 
       moduleController.updateModule
+    )
+  router
+    .route('/s')
+    .get(
+      authController.protect , 
+      moduleController.searchModules
+    )
+  router
+    .route('/autoComplete')
+    .get(
+      authController.protect ,
+      moduleController.searchAutoComplete
     )
 
 module.exports = router;
