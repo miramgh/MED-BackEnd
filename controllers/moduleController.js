@@ -51,7 +51,7 @@ exports.createModule = catchAsync(async (req, res, next) => {
           '$search': {
             'index': 'ModuleSearch',
             'text': {
-              'query': `{"content":{$search:{$eq :${req.query.searchTerm}}}}`,
+              'query': `${req.query.searchTerm}`,
               'path': {
                 'wildcard': '*'
               },
