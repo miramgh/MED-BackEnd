@@ -13,5 +13,6 @@ router
     authController.protect , 
     courseController.getAllCourses
     )
+   
 
 module.exports = router;

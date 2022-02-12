@@ -16,7 +16,7 @@ exports.createCourse = catchAsync(async (req, res, next) => {
     });
   });
   exports.getAllCourses = catchAsync(async (req, res, next) => {
-    const courses = await Course.find(req.query);
+    const courses = await Course.find({"instructorId ":req.query.instructorId});
   
   
     // SEND RESPONSE
@@ -27,6 +27,7 @@ exports.createCourse = catchAsync(async (req, res, next) => {
       }
     });
   });
+
 
   /*
   

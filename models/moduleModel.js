@@ -17,6 +17,10 @@ const moduleSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref:'Descussion'
     },
+   instructorId:{
+      type: mongoose.SchemaTypes.ObjectId,
+      ref:'User'
+    },
     content: {
       type: {},
       required: [true, 'each object must hold content']
