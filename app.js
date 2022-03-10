@@ -9,6 +9,10 @@ const cors = require('cors')
 
 const AppError = require('./utils/appError');
 const oAuthRouter = require('./routes/oAuthRoutes')
+
+const {graphqlHTTP} = require('express-graphql')
+const schema = require('./controllers/schema')
+
 const globalErrorHandler = require('./controllers/errorController');
 const caseRouter = require('./routes/caseRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -80,6 +84,10 @@ app.use((req, res, next) => {
 });
 
 // 3) ROUTES
+app.use('/graphql' , graphqlHTTP({
+  schema , 
+  graphiql:true
+}))
 
 app.use('/api/cases', caseRouter);
 app.use('/api/users', userRouter);

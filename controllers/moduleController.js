@@ -7,7 +7,7 @@ exports.createModule = catchAsync(async (req, res, next) => {
     
     const module = await Module.create(req.body);
     
-    console.log(module._id)
+    console.log(module)
    
     const course = await Course.findByIdAndUpdate( { _id: module.courseId }, 
         { $push: { chapters: {"topic": module.moduleTopic ,"moduleId":module._id} } },
@@ -37,12 +37,24 @@ exports.createModule = catchAsync(async (req, res, next) => {
 
   exports.updateModule = catchAsync(async (req , res , next )=>{
 
-    const module = await Module.findByIdAndUpdate({"_id":req.body.moduleId} , {"content": req.body.content}, {new:true})
+    const module = await Module.findOne({"_id":req.body.moduleId} ,function (err, mod) {
+     // user.username = newUser.username;
+
+     mod.content = {...mod.content , ...req.body.content}
+     //console.log(mod.content)
+      mod.save(function (err,newDoc) {
+          if(err) {
+              console.error('ERROR!');
+          }else{
+            //console.log(newDoc)
+            res.status(200).json({
+              status :'success', 
+              data : newDoc
+            })
+          }
+      });
+  });
    
-    res.status(200).json({
-      status :'success', 
-      data : module
-    })
   })
   exports.searchModules = catchAsync(async (req , res , next )=>{
     const modules = await  Module.aggregate(

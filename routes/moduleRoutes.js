@@ -10,7 +10,7 @@ router
     authController.protect , 
     moduleController.createModule)
   .get(
-    authController.protect , 
+    
     moduleController.getModule
     )
   .patch(
