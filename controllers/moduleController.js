@@ -40,7 +40,7 @@ exports.createModule = catchAsync(async (req, res, next) => {
     const module = await Module.findOne({"_id":req.body.moduleId} ,function (err, mod) {
      // user.username = newUser.username;
 
-     mod.content = {...mod.content , ...req.body.content}
+     mod.content.push(req.body.content) 
      //console.log(mod.content)
       mod.save(function (err,newDoc) {
           if(err) {
