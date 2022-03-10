@@ -7,12 +7,12 @@ exports.createModule = catchAsync(async (req, res, next) => {
     
     const module = await Module.create(req.body);
     
-    console.log(module)
+   // console.log(module)
    
     const course = await Course.findByIdAndUpdate( { _id: module.courseId }, 
         { $push: { chapters: {"topic": module.moduleTopic ,"moduleId":module._id} } },
         { new: true })
-   console.log(course)
+   //console.log(course)
     res.status(201).json({
       status: 'success',
       data: {

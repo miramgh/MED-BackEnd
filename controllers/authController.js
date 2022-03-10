@@ -66,7 +66,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
   user.password = undefined
   // 3) If everything ok, send token to client
-  console.log(user)
+  //console.log(user)
   createSendToken(user, 200, res);
 });
 

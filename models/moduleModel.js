@@ -22,7 +22,7 @@ const moduleSchema = new mongoose.Schema(
       ref:'User'
     },
     content: {
-      type: {},
+      type: [{}],
       required: [true, 'each object must hold content']
     }
     
